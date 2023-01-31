@@ -4,7 +4,7 @@ class Board
 
     def initialize
         @rows = Array.new(8) {Array.new {[]}}
-        # add_piece
+        add_piece
     end
 
     def [](pos)
@@ -17,19 +17,22 @@ class Board
 
     def move_piece(start_pos, end_pos)
 
-        if @rows[start_pos] == :NullPiece
+        start_x, start_y = start_pos
+        end_x, end_y = end_pos
 
+        if @rows[start_x][start_y] == nil #|| !valid_moves.include?(end_pos)
+            raise "invalid position"
         end
 
-        @rows[end_pos] = @rows[start_pos]
-        @rows[start_pos] = 
+        @rows[end_x][end_y] = @rows[start_x][start_y]
+        @rows[start_x][start_y] = nil
     end
 
     def add_piece
         @rows.each_with_index do |row, i|
             if i == 0 || i == 1 || i == 6 || i == 7
                 8.times do 
-                    row << Piece.new
+                    row << Piece.new.val
                 end
             else 
                 8.times do 
