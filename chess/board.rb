@@ -14,6 +14,11 @@ class Board
     end
 
     def move_piece(start_pos, end_pos)
+
+        if @rows[start_pos] == :NullPiece
+
+        end
+
         @rows[end_pos] = @rows[start_pos]
         @rows[start_pos] = 
     end
