@@ -26,27 +26,38 @@ module Slideable
 
         arr_of_moves = []
 
-        
 
-        move_dirs
+
+        # move_dirs
+        arr_of_moves
     end
 
-    private 
+    # private 
 
-    def move_dirs 
-        raise NotImplementedError.new "Not Implemented"
-    end
+    # def move_dirs 
+    #     raise NotImplementedError.new "Not Implemented"
+    # end
 
     def grow_unblocked_moves_in_dir(dx, dy) #assuming dx/dy is our starting pos rn
+        real_x = dx 
+        real_y = dy
+        direction_moves = []
         HORIZONTAL_DIRS.each do |direction|
-            dir_x, dir_y = direction
-            dx + dir_x = new_x
-            dy + dir_y = new_y
+            8.times do 
+                dir_x, dir_y = direction
+                new_x = dx + dir_x 
+                new_y = dy + dir_y 
             
-            if (new_x >= 0 && new_x <= 7) && (new_y >= 0 && new_y <= 7)
-                arr_of_moves << [new_x, new_y]
+                if (new_x >= 0 && new_x <= 7) && (new_y >= 0 && new_y <= 7)
+                    direction_moves << [new_x, new_y]
+                end
+
+                dx = new_x 
+                dy = new_y
             end
+            dx = real_x 
+            dy = real_y
         end
-    
+        direction_moves
     end
 end

@@ -1,4 +1,8 @@
+require_relative "slideable.rb"
+
 class Piece
+    include Slideable
+
     attr_reader :val
     def initialize(val='P')
         @val = val
