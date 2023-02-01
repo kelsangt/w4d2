@@ -1,3 +1,5 @@
+require "byebug"
+
 module Slideable
     HORIZONTAL_DIRS = [
     [-1, 0], #left
@@ -39,16 +41,18 @@ module Slideable
     #     raise NotImplementedError.new "Not Implemented"
     # end
 
-    def grow_unblocked_moves_in_dir(dx, dy) #assuming dx/dy is our starting pos rn
+    def grow_unblocked_moves_in_dir(dx, dy) 
 
         direction_moves = []
         piece_x, piece_y = self.pos
 
-        8.times do
-            new_x = piece_x + dx #3 = 4 -1
-            new_y = piece_y + dy #4 = 4 -0
+        (1..7).each do |i|
+            new_x = piece_x + (i * dx) 
+            new_y = piece_y + (i * dy) 
 
-            if ((0..7).include?(new_x) && (0..7).include?(new_y)) && @rows[new_x][new_y] == nil
+            if ((0..7).include?(new_x) && (0..7).include?(new_y)) 
+                #&& @rows[new_x][new_y] == nil
+
                 direction_moves << [new_x, new_y]
             end
 

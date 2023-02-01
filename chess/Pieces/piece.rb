@@ -3,7 +3,7 @@ require_relative "slideable.rb"
 class Piece
     include Slideable
 
-    attr_reader :val
+    attr_reader :val, :pos
     def initialize(val='P')
         @val = val
         # @color = :white
