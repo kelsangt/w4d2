@@ -8,7 +8,7 @@ class Piece
         @val = val
         # @color = :white
         # @board = Board.new
-        # @pos = []
+        @pos = []
     end
 
     def to_s
@@ -21,6 +21,8 @@ class Piece
     end
 
     def pos=(val)
+        x,y = val
+        @pos = [x,y]
     end
 
     def symbol

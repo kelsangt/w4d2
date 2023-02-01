@@ -23,17 +23,12 @@ module Slideable
     end
 
     def moves 
-        
-        move_dirs.each do |direction|
-            x, y = direction
-            grow_unblocked_moves_in_dir(x, y)
-        end
         arr_of_moves = []
 
-
-         
-
-
+        move_dirs.each do |direction|
+            x, y = direction
+            arr_of_moves += grow_unblocked_moves_in_dir(x, y)
+        end
         
         arr_of_moves
     end
@@ -45,18 +40,18 @@ module Slideable
     # end
 
     def grow_unblocked_moves_in_dir(dx, dy) #assuming dx/dy is our starting pos rn
-        real_x = dx  # -1
-        real_y = dy  # 0
-        direction_moves = []
-        8.times do  
-            if ((dx >= 0 && dx <= 7) && (dy >= 0 && dy <= 7)) 
-                && @rows[dx][dy] == nil
 
-                direction_moves << [dx, dy]
+        direction_moves = []
+        piece_x, piece_y = self.pos
+
+        8.times do
+            new_x = piece_x + dx #3 = 4 -1
+            new_y = piece_y + dy #4 = 4 -0
+
+            if ((0..7).include?(new_x) && (0..7).include?(new_y)) && @rows[new_x][new_y] == nil
+                direction_moves << [new_x, new_y]
             end
 
-            dx += real_x 
-            dy += real_y
         end
         direction_moves
     end
