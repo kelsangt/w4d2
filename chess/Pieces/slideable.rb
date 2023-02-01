@@ -45,42 +45,18 @@ module Slideable
     # end
 
     def grow_unblocked_moves_in_dir(dx, dy) #assuming dx/dy is our starting pos rn
-        real_x = dx 
-        real_y = dy
+        real_x = dx  # -1
+        real_y = dy  # 0
         direction_moves = []
-        HORIZONTAL_DIRS.each do |direction|
-            8.times do 
-                dir_x, dir_y = direction
-                new_x = dx + dir_x 
-                new_y = dy + dir_y 
-            
-                if ((new_x >= 0 && new_x <= 7) && (new_y >= 0 && new_y <= 7)) 
-                    && @rows[new_x][new_y] == nil
+        8.times do  
+            if ((dx >= 0 && dx <= 7) && (dy >= 0 && dy <= 7)) 
+                && @rows[dx][dy] == nil
 
-                    direction_moves << [new_x, new_y]
-                end
-
-                dx = new_x 
-                dy = new_y
+                direction_moves << [dx, dy]
             end
-            dx = real_x 
-            dy = real_y
 
-            DIAGONAL_DIRS.each do |direction|
-                8.times do 
-                    dir_x, dir_y = direction
-                    new_x = dx + dir_x 
-                    new_y = dy + dir_y 
-                
-                    if (new_x >= 0 && new_x <= 7) && (new_y >= 0 && new_y <= 7)
-                        direction_moves << [new_x, new_y]
-                    end
-    
-                    dx = new_x 
-                    dy = new_y
-                end
-                dx = real_x 
-                dy = real_y
+            dx += real_x 
+            dy += real_y
         end
         direction_moves
     end
