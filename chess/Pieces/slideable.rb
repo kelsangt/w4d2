@@ -51,7 +51,7 @@ module Slideable
             new_y = piece_y + (i * dy) 
 
             if ((0..7).include?(new_x) && (0..7).include?(new_y)) 
-                #&& @rows[new_x][new_y] == nil
+                && @rows[new_x][new_y] == nil
 
                 direction_moves << [new_x, new_y]
             end
