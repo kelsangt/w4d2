@@ -4,7 +4,7 @@ class Piece
     include Slideable
 
     attr_reader :val, :pos
-    def initialize(val='P')
+    def initialize(val)
         @val = val
         # @color = :white
         # @board = Board.new
@@ -15,6 +15,8 @@ class Piece
     end
     
     def empty?
+        return true if @row[pos] == nil
+        false
     end
 
     def valid_moves

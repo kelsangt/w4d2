@@ -5,7 +5,7 @@ class Queen < Piece
     include Slideable
 
     def initialize
-        super('Q')
+        super('♛')
     end
 
     def move_dirs

@@ -1,4 +1,5 @@
 require_relative "./Pieces/piece.rb"
+require_relative "./Pieces/queen.rb"
 
 class Board
 
@@ -30,9 +31,13 @@ class Board
 
     def add_piece
         @rows.each_with_index do |row, i|
-            if i == 0 || i == 1 || i == 6 || i == 7
+            if i == 0 || i == 1
                 8.times do 
-                    row << Piece.new.val
+                    row << Piece.new('B').val
+                end
+            elsif i == 6 || i == 7
+                8.times do 
+                    row << Piece.new('W').val
                 end
             else 
                 8.times do 
@@ -40,6 +45,8 @@ class Board
                 end
             end
         end
+        @rows[0][3] = Queen.new.val
+        @rows[7][3] = Queen.new.val
     end
 
 end

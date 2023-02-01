@@ -35,11 +35,11 @@ module Slideable
         arr_of_moves
     end
 
-    # private 
+    private 
 
-    # def move_dirs 
-    #     raise NotImplementedError.new "Not Implemented"
-    # end
+    def move_dirs 
+        raise NotImplementedError.new "Not Implemented"
+    end
 
     def grow_unblocked_moves_in_dir(dx, dy) 
 
