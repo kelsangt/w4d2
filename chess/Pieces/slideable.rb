@@ -37,7 +37,16 @@ module Slideable
         raise NotImplementedError.new "Not Implemented"
     end
 
-    def grow_unblocked_moves_in_dir(dx, dy)
-
+    def grow_unblocked_moves_in_dir(dx, dy) #assuming dx/dy is our starting pos rn
+        HORIZONTAL_DIRS.each do |direction|
+            dir_x, dir_y = direction
+            dx + dir_x = new_x
+            dy + dir_y = new_y
+            
+            if (new_x >= 0 && new_x <= 7) && (new_y >= 0 && new_y <= 7)
+                arr_of_moves << [new_x, new_y]
+            end
+        end
+    
     end
 end
